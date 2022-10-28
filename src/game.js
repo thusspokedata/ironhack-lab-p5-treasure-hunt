@@ -2,13 +2,12 @@ class Game {
   constructor() {
     this.player
     this.playerImage
+    
   }
 
   drawGrid() {
     for (let i = 0; i <= 10; i++) {
       line(0, SQUARE_SIDE * i, WIDTH, SQUARE_SIDE * i);
-    }
-    for (let i = 0; i <= 10; i++) {
       line(SQUARE_SIDE * i, 0, SQUARE_SIDE* i, WIDTH);
     }
   }
@@ -16,8 +15,8 @@ class Game {
 
 class Player {
   constructor(col, row) {
-    this.col = 400;
-    this.row = 400;
+    this.col = col;
+    this.row = row;
     this.width = 100;
     this.height = 100;
     this.imageDown
@@ -68,5 +67,29 @@ class Player {
        this.moveRight()
      }
     }
+  }
+
+  class Treasure {
+    constructor(col, row) {
+      this.col = col
+      this.row = row
+      this.width = 100;
+      this.height = 100;
+      this.imageTreasure
+    }
+
+    preload() {
+      this.imageTreasure = loadImage('assets/treasure.png');
+    }
+
+    drawTreasure () {
+      image(this.imageTreasure , this.col, this.row, this.width, this.height)
+     }
+    
+    setRandomPosition() {
+      this.col = (Math.floor(Math.random() * 10)) * 100 + 10
+      this.row = (Math.floor(Math.random() * 10)) * 100 + 10
+    }
+
   }
   
